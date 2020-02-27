@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>When's the Train?</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
+  integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+  crossorigin=""/>
+  <script src="https://cdn-webgl.eegeo.com/eegeojs/api/v0.1.780/eegeo.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <div class="jumbotron jumbotron-fluid" style="background-image: url('https://image.shutterstock.com/image-photo/white-rectangle-mosaic-tiles-texture-260nw-1288815238.jpg');
+  background-size: cover">
+    <h1 style="font-family: 'Baskerville'; font-style: normal; font-weight: bold; text-align: center">SUBWAY TRACKER</h1>
+  </div>
+    <div class="container text-center">
+      <div class="jumbotron jumbotron-fluid">
+          <div class="container">
+              <h1 class="display-4">Welcome!</h1><br>
+              <p class="lead">Choose your train line and your stop to see when the next train is coming. Or, scroll down to see 
+                how late each train line has been today.
+              </p>
+          </div>
+        <div class="row">
+          <div class="col-md-6 col-sm-12">
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Choose a Line</label>
+              <select class="form-control" id="lineform">
+                {% for line in lines %}
+                  <option>{{ line }}</option>
+                  {% endfor %}
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-12">
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Choose a Stop</label>
+              <select class="form-control" id="stopform">
+                {% for stop in stops %}
+                  {% if 'N' in stop %}
+                    <option value="{{ stop }}">{{ stops[stop] }} Northbound</option>
+                  {% elif 'S' in stop %}
+                    <option value="{{ stop }}">{{ stops[stop] }} Southbound</option>
+                  {% endif %}
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+        </div>
+        <a class="btn btn-primary" href="#" id="process_input" role="button">Let's See It!</a>
+      </div>
+    </div>
+    <div class="container text-left">
+      <div class="row">
+        <div id="trainfeed"></div>
+      </div>
+    </div>
+    <div class="container text-center">
+      <div id="content" style="position: relative">
+        <div id='map' style="height: 650px"></div>
+      </div>
+      <h2 class="display-4">Total Train Delays Today by Line</h2>
+      <div class="row" id="delays">
+        <p class="lead" id="loading">Loading...</p>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" 
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous">
+  </script>
+  <script src="{{ url_for('static', filename='js/config.js') }}"></script>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+  <script src="{{ url_for('static', filename='js/lat_lon_.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+
+</html>

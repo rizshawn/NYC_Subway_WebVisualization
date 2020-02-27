@@ -1,0 +1,12 @@
+{% if 'N' in stop %}
+<h1>{{ station }} <small class="text-muted">Northbound</small></h1>
+{% elif 'S' in stop %}
+<h1>{{ station }} <small class="text-muted">Southbound</small></h1>
+{% else %}
+<h1>{{ station }}</h1>
+{% endif %}
+<ul class='list-group'>
+    {% for train in trains %}
+        <li class='list-group-item'>There is a {{train['line']}} train arriving at {{ train['arrival'][10:] }}</li>
+    {% endfor %}
+</ul>
