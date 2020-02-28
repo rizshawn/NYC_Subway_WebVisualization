@@ -8,5 +8,5 @@ Technoloiges used to deploy web application:
 - Javascript (D3)
 - Heroku 
 
-Please use the following link to view the NYC Subway Tracker app!
+Please use the following link to view the NYC Subway Tracker app on Heroku!
 [NYC Subway Tracker](https://mta-subway-tracker.herokuapp.com/)
