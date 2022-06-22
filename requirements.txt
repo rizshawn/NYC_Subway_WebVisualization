@@ -19,7 +19,7 @@ Jinja2==2.10.3
 kombu==4.6.6
 MarkupSafe==1.1.1
 more-itertools==8.0.0
-numpy==1.17.2
+numpy==1.22.0
 pandas==0.25.1
 protobuf==3.10.0
 protobuf3-to-dict==0.1.5
