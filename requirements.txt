@@ -21,7 +21,7 @@ MarkupSafe==1.1.1
 more-itertools==8.0.0
 numpy==1.17.2
 pandas==0.25.1
-protobuf==3.10.0
+protobuf==3.18.3
 protobuf3-to-dict==0.1.5
 pymongo==3.9.0
 python-dateutil==2.8.0
